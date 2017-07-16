@@ -42,7 +42,7 @@ public class ReportAction {
 	
 	@Autowired
 	private MaskService dtoService;
-	
+	                              
 	private static Member member;
 	
 	private String id;
