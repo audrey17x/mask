@@ -1,6 +1,7 @@
 package com.shell.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -27,6 +28,42 @@ public class MaskDaoImpl implements MaskDao{
 	
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> getPDFByCriteria(Map<String, Object> map) throws Exception {
+		
+		StringBuffer querySql = new StringBuffer();
+		                                                 
+		querySql.append(" select P_Id, ");
+		querySql.append(" P_NAME, SKINTYPE, FEATURE, PRICE, STOCK, SALES ");
+		querySql.append(" from product ");
+        querySql.append(" where 1=1 ");
+        
+        if(StringUtils.isNotBlank((String) map.get("priceStr")) && StringUtils.isNotBlank((String) map.get("priceEnd"))) {
+        	querySql.append(" and price between " + (String) map.get("priceStr") + " and   ");
+        	querySql.append(" " + (String) map.get("priceEnd") + " ");
+        	
+        }
+
+        querySql.append(" order by P_Id ");
+        
+		Query query = entityManager.createNativeQuery(querySql.toString(), Product.class);
+		
+		List<Product> result = query.getResultList();								
+		
+        return result;		
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public List<Product> findAll() {
 //		Session session = HibernateUtil.getSessionFactory().openSession();

@@ -65,7 +65,6 @@ public class ProductAction {
 //		return model;
 	}
 	
-
 	public String getId() {
 		return id;
 	}

@@ -1,8 +1,8 @@
 package com.shell.service;
 
 import java.util.List;
+import java.util.Map;
 
-import com.shell.model.Order;
 import com.shell.model.Product;
 
 
@@ -19,4 +19,6 @@ public interface MaskService {
 	public List<Product> findAll();
 	
 	public Product findByPK(String pk);
+	
+	public List<Product> getPDFByCriteria(Map<String, Object> map) throws Exception;
 }

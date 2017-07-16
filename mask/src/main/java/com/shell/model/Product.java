@@ -1,12 +1,15 @@
 package com.shell.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -46,5 +49,8 @@ public @Data class Product implements java.io.Serializable {
 
 	@Column(name = "SALES")
 	private BigDecimal sales;
+	
+	@Transient
+	private List<Product> dtoList = new ArrayList<Product>();
 
 }

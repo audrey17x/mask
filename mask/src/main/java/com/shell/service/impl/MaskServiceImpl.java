@@ -1,6 +1,7 @@
 package com.shell.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,6 +29,10 @@ public class MaskServiceImpl implements MaskService{
 	
 	public Product findByPK(String pk) {
 		return maskDao.findByPK(pk);
+	}
+	
+	public List<Product> getPDFByCriteria(Map<String, Object> map) throws Exception {
+		return maskDao.getPDFByCriteria(map);
 	}
 
 

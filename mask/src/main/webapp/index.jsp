@@ -218,6 +218,10 @@
 					  $("#productTarget").submit();
 				});	
 				
+				$("#report").click(function() {
+					  $("#reportTarget").submit();
+				});	
+				
 				$("#register").click(function() {
 					  $("#registerTarget").submit();
 				});	
@@ -246,6 +250,7 @@
 						<button id="home">Home</button>
 						<button id="about">About</button>
 						<button id="product">Product</button>
+						<button id="report">report</button>
 						<button id="contact">Contact</button>
 					</span>
 					<!-- social  -->
@@ -449,5 +454,7 @@
 		</form:form>	
 		<form:form modelAttribute="product" id="outTarget" action="${pageContext.request.contextPath}/views/index/out" method="post">
 		</form:form>		
+		<form:form modelAttribute="product" id="reportTarget" action="${pageContext.request.contextPath}/views/report/init" method="post">
+		</form:form>	
 	</body>
 </html>

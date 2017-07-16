@@ -287,7 +287,13 @@
 		    <version>1.5.2.RELEASE</version>
 		    <scope>test</scope>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.2.0</version>
+		</dependency>		
+            
 		
 	</dependencies>
 	<reporting>
