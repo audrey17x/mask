@@ -26,7 +26,7 @@ import lombok.Data;
 public @Data class Product implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 8795837778673508258L;
-
+ 
 	@Id
 	@GeneratedValue
 	@Column(name = "P_Id")
@@ -52,5 +52,8 @@ public @Data class Product implements java.io.Serializable {
 	
 	@Transient
 	private List<Product> dtoList = new ArrayList<Product>();
+	
+	@Transient
+	private String salesPercentage;
 
 }

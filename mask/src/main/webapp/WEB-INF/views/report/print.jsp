@@ -59,7 +59,10 @@
 	</style>
 	<script>
 		$(document).ready(function () {
-			
+			$("#tableElement").click(function() {
+				$('#qForm').prop('action', "./exportPdfOfTableElement");
+			  	$('#qForm').submit();	
+			});	
 		});
 		
 		
@@ -133,12 +136,17 @@
 				<tr>
 					<td">
 						<label>價格：</label>
-						<input type="text" name="priceStr" value="600">&nbsp;~&nbsp;<input type="text" name="priceEnd" value="800">
+						<input type="text" name="priceStr" value="500">&nbsp;~&nbsp;<input type="text" name="priceEnd" value="800">
 					</td>
 				</tr>	
 				<tr>
 					<td>
 						<input type="submit" value="列印"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button id="tableElement">表格元素版本的列印</button>
 					</td>
 				</tr>
 			</table>

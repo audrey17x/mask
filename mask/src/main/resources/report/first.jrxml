@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-07-16T19:21:52 -->
+<!-- 2017-07-16T23:11:59 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73dc9355-6f79-41d0-b8f5-351b794fd29a">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -16,41 +16,6 @@
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<subDataset name="Dataset2" uuid="2d621e8c-61fe-45d6-954b-7c5a004fc62b">
-		<field name="name" class="java.lang.String"/>
-		<field name="skinType" class="java.lang.String"/>
-		<field name="feature" class="java.lang.String"/>
-		<field name="price" class="java.math.BigDecimal"/>
-		<field name="stock" class="java.math.BigDecimal"/>
-		<field name="sales" class="java.math.BigDecimal"/>
-	</subDataset>
 	<parameter name="HEADER_PARAMETER" class="java.lang.Object">
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
@@ -61,7 +26,13 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="dtoList" class="java.util.List"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="skinType" class="java.lang.String"/>
+	<field name="feature" class="java.lang.String"/>
+	<field name="price" class="java.math.BigDecimal"/>
+	<field name="stock" class="java.math.BigDecimal"/>
+	<field name="sales" class="java.math.BigDecimal"/>
+	<field name="salesPercentage" class="java.lang.String"/>
 	<pageHeader>
 		<band height="56" splitType="Stretch">
 			<subreport>
@@ -72,147 +43,110 @@
 			</subreport>
 		</band>
 	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="90ba4293-77ec-4509-8e1f-edddfe5a2f3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[產品名稱]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="30" uuid="5b4c0b41-15aa-4b71-8bc4-44f687d27783"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[適用膚質]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="30" uuid="c200406e-5d06-45b0-abbb-0ed37f8d5912"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[效果]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="70" height="30" uuid="f38a70eb-6789-4123-943e-5702175134f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[價格]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="70" height="30" uuid="efe9fe05-4c25-4b1f-b087-3f6d18e918d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[庫存]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="60" height="30" uuid="e6b0f642-b537-4828-9228-270f3927e72b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[銷售量]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="30" uuid="7cfe54b0-538d-4676-9bd4-50fca4faff7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[銷售比例]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
 	<detail>
-		<band height="69" splitType="Stretch">
-			<componentElement>
-				<reportElement x="0" y="0" width="740" height="69" uuid="375c2a7c-7fac-42c6-af57-9e42da467709">
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset2" uuid="074bb72a-9d3c-49bd-8af3-04772cd4efdf">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{dtoList})]]></dataSourceExpression>
-					</datasetRun>
-					<jr:column width="130" uuid="fd26ecd8-750e-46a9-9e1e-adc7c770d190">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:columnHeader style="Table_CH" height="50" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="130" height="50" uuid="1367b15f-76ec-4b4d-82fd-52bb8748322e"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<text><![CDATA[產品名稱]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField isStretchWithOverflow="true">
-								<reportElement x="0" y="0" width="130" height="30" uuid="bd459eb6-a2bf-487e-ace4-0e78e4c7e6fa"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="150" uuid="1ad92b4f-a22a-4afc-9092-d2f7dcfa95ed">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:columnHeader style="Table_CH" height="50" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="150" height="50" uuid="f1556f03-72dd-40e8-9a8f-87bead077fae"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<text><![CDATA[適用膚質]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField isStretchWithOverflow="true">
-								<reportElement x="0" y="0" width="150" height="30" uuid="006e72dc-7c41-4895-8f92-ab97813a3d87"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{skinType}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="100" uuid="a7d0eb5c-7dd3-46f1-8c31-2bdb9561376a">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:columnHeader style="Table_CH" height="50" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="100" height="50" uuid="41ea1cb9-4676-4473-b551-2f921fd4bdfc"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<text><![CDATA[效果]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="100" height="30" uuid="d637dda9-23d3-4bdc-a571-6331a5208470"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{feature}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="70" uuid="079c94d7-6079-4403-ae75-1525751b56ee">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-						<jr:columnHeader style="Table_CH" height="50" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="70" height="50" uuid="a7ca1f8e-7697-465a-9135-deb914954057"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<text><![CDATA[價格]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="70" height="30" uuid="5bf66246-b679-4ab9-81c9-0e1e52c15a0c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="50" uuid="079c94d7-6079-4403-ae75-1525751b56ee">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-						<jr:columnHeader style="Table_CH" height="50" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="50" height="50" uuid="a7ca1f8e-7697-465a-9135-deb914954057"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<text><![CDATA[庫存]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="50" height="30" uuid="5bf66246-b679-4ab9-81c9-0e1e52c15a0c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="60" uuid="079c94d7-6079-4403-ae75-1525751b56ee">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-						<jr:columnHeader style="Table_CH" height="50" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="60" height="50" uuid="a7ca1f8e-7697-465a-9135-deb914954057"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<text><![CDATA[銷售量]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="60" height="30" uuid="5bf66246-b679-4ab9-81c9-0e1e52c15a0c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="kaiu"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{sales}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
+		<band height="39" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="100" height="39" uuid="94534230-8034-4983-8dc7-936b656750d3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="0" width="100" height="39" uuid="fd81cf78-96ef-480c-b1da-491e78cf8cbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{skinType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="200" y="0" width="100" height="39" uuid="569a5bad-1ee3-4b2e-a69a-237ba5eac4f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{feature}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="300" y="0" width="70" height="39" uuid="5e9bb986-99a8-4e17-98d8-dd46f4e84475"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="70" height="39" uuid="62296eff-22ff-432a-b3b6-21c5a05f68d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="440" y="0" width="60" height="39" uuid="21a0000b-d3dc-426b-a77f-4ed9c4d6c31f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="500" y="0" width="50" height="39" uuid="d27c27df-545c-4016-9609-dff4e36273af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salesPercentage}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
