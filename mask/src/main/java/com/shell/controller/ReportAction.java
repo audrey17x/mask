@@ -1,16 +1,11 @@
 package com.shell.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.shell.common.HeaderReportDto;
+import com.shell.common.ReportUtil;
 import com.shell.model.Member;
 import com.shell.model.Product;
-import com.shell.report.JasperReportsView;
 import com.shell.service.MaskService;
 
 /**
@@ -46,13 +40,14 @@ public class ReportAction {
 	private static Member member;
 	
 	private static String PAGE = "report/print.jsp";
-	private static String DESC = "第一張列印報表";
+	private static String DESCRIPTION = "第一張列印報表";
 	private static String ID = "first";
 	private static String FILE_NAME = "first.jrxml";
 	
 	private static String DESC_OF_TABLE = "第一張列印報表表格元素版";
 	private static String ID_OF_TABLE = "firstOfTableElement";
 	private static String FILE_NAME_OF_TABLE = "firstOfTableElement.jrxml";
+	private static String REOPRT_NAME = "商品銷售報表";
 	       
 	@RequestMapping(value = "/init",method = RequestMethod.POST)
 	public ModelAndView init(HttpServletRequest req, HttpServletResponse res) {
@@ -83,41 +78,15 @@ public class ReportAction {
 				dto.setSalesPercentage(salesPercentage);
 			}
 			      
-			//主報表路徑名稱
-	    	String templateFile = File.separator+FILE_NAME;
-	         	
-			Map<String, Object> reportParams = new HashMap<String, Object>();
-			//header共用參數
-			HeaderReportDto dto = new HeaderReportDto();
-			//網站名稱
-			dto.setCenterName("卸下你的。真面目");
-			//程式代號
-			dto.setProgramId(ID);
-			//報表的名稱
-			dto.setReportName("商品銷售報表");
-			//列印者
-			dto.setPrinter("shell");
-			reportParams.put("HEADER_PARAMETER", dto);
 			//header自訂參數(查詢條件string)
 	        List<String> hString = new ArrayList<String>();
 	        if(!StringUtils.isEmpty((String) map.get("priceStr"))) {
 	        	hString.add("價格：" + (String) map.get("priceStr") + "~" + (String) map.get("priceEnd"));
 	        }
-            
-	        reportParams.put("HEADER_FIELDS", hString);
-	        // 設定footer報表data
-	        List<String> fString = new ArrayList<String>();
-	        //輸入報表的表尾
-	        fString.add("感謝您");
-	        reportParams.put("FOOTER_PARAMETER", fString);
-			// 設定共用報表-結束  
-                   
-			Map<String,Object> beans = new HashMap<String,Object>();
-			beans.put("reportParams", reportParams);
-			beans.put("reportDataSource", dtoList);
   
 			//1:直向報表2:橫向報表
-			return new ModelAndView(new JasperReportsView(templateFile, 1, DESC),beans);
+			return ReportUtil.exportPdf(FILE_NAME, DESCRIPTION, ID, REOPRT_NAME, dtoList, hString, 1);
+					
       
 		}catch(Exception e){
 			throw e;
@@ -136,41 +105,15 @@ public class ReportAction {
 			Product result = new Product();
 			result.setDtoList(dtoList);
 	    	resultList.add(result);
-         
-			//主報表路徑名稱
-	    	String templateFile = File.separator+FILE_NAME_OF_TABLE;
-	         	
-			Map<String, Object> reportParams = new HashMap<String, Object>();
-			//header共用參數
-			HeaderReportDto dto = new HeaderReportDto();
-			//網站名稱
-			dto.setCenterName("卸下你的。真面目");
-			//程式代號
-			dto.setProgramId(ID_OF_TABLE);
-			//報表的名稱
-			dto.setReportName("商品銷售報表");
-			//列印者
-			dto.setPrinter("shell");
-			reportParams.put("HEADER_PARAMETER", dto);
+	    	
 			//header自訂參數(查詢條件string)
 	        List<String> hString = new ArrayList<String>();
 	        if(!StringUtils.isEmpty((String) map.get("priceStr"))) {
 	        	hString.add("價格：" + (String) map.get("priceStr") + "~" + (String) map.get("priceEnd"));
 	        }
-            
-	        reportParams.put("HEADER_FIELDS", hString);
-	        // 設定footer報表data
-	        List<String> fString = new ArrayList<String>();
-	        fString.add("感謝您");
-	        reportParams.put("FOOTER_PARAMETER", fString);
-			// 設定共用報表-結束  
-                   
-			Map<String,Object> beans = new HashMap<String,Object>();
-			beans.put("reportParams", reportParams);
-			beans.put("reportDataSource", resultList);
   
 			//1:直向報表2:橫向報表
-			return new ModelAndView(new JasperReportsView(templateFile, 1, DESC_OF_TABLE),beans);
+			return ReportUtil.exportPdf(FILE_NAME_OF_TABLE, DESC_OF_TABLE, ID_OF_TABLE, REOPRT_NAME, resultList, hString, 1);
       
 		}catch(Exception e){
 			throw e;

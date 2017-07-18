@@ -10,8 +10,8 @@ public @Data class HeaderReportDto {
 	//列印者
 	private String printer;
 	
-	//中心單位別
-	private String centerName;
+	//網站名
+	private String webName;
 	
 	//報表名稱
 	private String reportName;

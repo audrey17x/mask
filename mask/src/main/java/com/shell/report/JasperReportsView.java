@@ -132,7 +132,7 @@ public class JasperReportsView extends AbstractView {
         		Map<String, Object> paramSub = new HashMap<String, Object>(); // 子報表PARAMETER
     	        paramSub.put("programId", dto.getProgramId()); // 子報表參數一
     	        paramSub.put("printer", dto.getPrinter()); // 子報表參數二
-    	        paramSub.put("centerName", dto.getCenterName()); // 子報表參數二
+    	        paramSub.put("webName", dto.getWebName()); // 子報表參數二
     	        paramSub.put("reportName", dto.getReportName()); // 子報表參數二
     	        reportParams.put("HEADER_PARAMETER", paramSub); // 父報表放子報表的PARAMETER
     	        
