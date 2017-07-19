@@ -5,17 +5,14 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<title>卸下你的。真面目</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<!-- 網站設計css -->
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" />
-		<!-- Modernizr -->
-		<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
-		<!-- <script src="jquery.blockUI.js"></script> -->
-		<script src="${pageContext.request.contextPath}/js/jquery.blockUI.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
+		<!-- header -->
+		<%@ include file="/WEB-INF/views/common/head.jsp"%>
+		<!-- css -->
+		<%@ include file="/WEB-INF/views/common/css.jsp"%>
+		<!-- script -->
+		<%@ include file="/WEB-INF/views/common/script.jsp"%>
+		<script src="${pageContext.request.contextPath}/js/common/common.js" type="text/javascript"></script>
+
 		<!-- Resource style -->
 		<style type="text/css">
 		#gotop {
@@ -191,9 +188,6 @@
 				
 				*/
 				
-
-				
-				
 				$(function() {
 					$("#gotop").click(function() {
 						jQuery("html,body").animate({
@@ -209,70 +203,12 @@
 					});
 				});
 				
-				
-				$("#home").click(function() {
-					  $("#indexTarget").submit();
-				});	
-				
-				$("#product").click(function() {
-					  $("#productTarget").submit();
-				});	
-				
-				$("#report").click(function() {
-					  $("#reportTarget").submit();
-				});	
-				
-				$("#register").click(function() {
-					  $("#registerTarget").submit();
-				});	
-				
-				$("#login").click(function() {
-					  $("#loginTarget").submit();
-				});	
-				
-				$("#out").click(function() {
-					  $("#outTarget").submit();
-				});	
-				
-				$("#formLogin").hide();
-				$("#registerDiv").hide();
-		
 			});
 		</script>
 	</head>
 	<body>
 		<!-- header -->
-		<header class="header">
-			<nav class="nav">
-				<ul>
-					<!-- office -->
-					<span>
-						<button id="home">Home</button>
-						<button id="about">About</button>
-						<button id="product">Product</button>
-						<button id="report">report</button>
-						<button id="contact">Contact</button>
-					</span>
-					<!-- social  -->
-
-					    <c:choose>
-					        <c:when test="${sessionScope.result == 'success'}">
-								<span style="float: right;">
-									您好！<c:out value="${sessionScope.name}"/>
-									<button id="out">out</button>
-								</span>
-					    	</c:when>
-						    <c:otherwise>
-								<!-- social  -->
-								<span style="float: right;">
-									<button id="login">Login</button>
-									<button id="register">register</button>
-								</span>
-						    </c:otherwise>
-					    </c:choose>
-				</ul>
-			</nav>
-		</header>
+		<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	
 		<!-- body-->
 		<div id="AboutTitle" class="cd-fixed-bg1" style="text-align: center;">
@@ -417,18 +353,5 @@
 		<div id="gotop">˄</div>
 		<!-- Footer -->
 		<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-		
-		<form:form modelAttribute="product" id="productTarget" action="${pageContext.request.contextPath}/views/product/show" method="post">
-		</form:form>	
-		<form:form modelAttribute="product" id="indexTarget" action="${pageContext.request.contextPath}/views/index/init" method="get">
-		</form:form>	
-		<form:form modelAttribute="product" id="registerTarget" action="${pageContext.request.contextPath}/views/index/register" method="get">
-		</form:form>	
-		<form:form modelAttribute="product" id="loginTarget" action="${pageContext.request.contextPath}/views/index/login" method="get">
-		</form:form>	
-		<form:form modelAttribute="product" id="outTarget" action="${pageContext.request.contextPath}/views/index/out" method="post">
-		</form:form>		
-		<form:form modelAttribute="product" id="reportTarget" action="${pageContext.request.contextPath}/views/report/init" method="post">
-		</form:form>	
 	</body>
 </html>

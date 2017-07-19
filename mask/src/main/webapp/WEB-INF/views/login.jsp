@@ -8,95 +8,56 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/order/main.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.css">
+		<script src="${pageContext.request.contextPath}/js/common/common.js" type="text/javascript"></script>
+	
+		<style type="text/css">
+			.header {
+				height: 60px;
+				width: 100%;
+				top: 0;
+				position: fixed;
+				background-color: black;
+			}
+			.nav {
+				height: 100px;
+				padding: 10px;
+				background-attachment: fixed;
+				line-hight: 29px;
+				/*text-align: left;*/
+			}
+			#gotop {
+			    display: none;
+			    position: fixed;
+			    right: 20px;
+			    bottom: 20px;    
+			    padding: 10px 15px;    
+			    font-size: 20px;
+			    background: #777;
+			    color: white;
+			    cursor: pointer;
+			}
+		</style>	
+			<!-- Scripts -->
+		<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
+		<script src="${pageContext.request.contextPath}/js/skel.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/util.js"></script>
+		<script src="${pageContext.request.contextPath}/js/main.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
+		<script>
+			$(document).ready(function() {
+			  	
+				$("#registerSubmit").click(function() {
+					$("#registerForm").validate();
+					$("#registerForm").submit();
+				});	
+			});	
+		</script>
 	</head>
-<style type="text/css">
-	.header {
-		height: 60px;
-		width: 100%;
-		top: 0;
-		position: fixed;
-		background-color: black;
-	}
-	.nav {
-		height: 100px;
-		padding: 10px;
-		background-attachment: fixed;
-		line-hight: 29px;
-		/*text-align: left;*/
-	}
-	#gotop {
-	    display: none;
-	    position: fixed;
-	    right: 20px;
-	    bottom: 20px;    
-	    padding: 10px 15px;    
-	    font-size: 20px;
-	    background: #777;
-	    color: white;
-	    cursor: pointer;
-	}
-</style>	
-	<!-- Scripts -->
-<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
-<script src="${pageContext.request.contextPath}/js/skel.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
-<script>
-	$(document).ready(function() {
-		$("#home").click(function() {
-			  $("#indexTarget").submit();
-		});	
-		
-		$("#product").click(function() {
-			  $("#productTarget").submit();
-		});	
-		
-		$("#register").click(function() {
-			  $("#registerTarget").submit();
-		});
-	  	$( function() {
-		    $( "#datepicker" ).datepicker();
-		} );
-	  	
-		$("#registerSubmit").click(function() {
-			$("#registerForm").validate();
-			$("#registerForm").submit();
-		});	
-	});	
-</script>
-
 	<body id="top">
-			<!-- header -->
-			<header class="header">
-				<nav class="nav">
-					<ul>
-						<!-- office -->
-						<span>
-							<button id="home">Home</button>
-							<button id="about">About</button>
-							<button id="product">Product</button>
-							<button id="contact">Contact</button>
-						</span>
-					    <c:choose>
-					        <c:when test="${sessionScope.result == 'success'}">
-								<span style="float: right;">
-									您好！<c:out value="${sessionScope.name}"/>
-									<button id="out">out</button>
-								</span>
-					    	</c:when>
-						    <c:otherwise>
-								<!-- social  -->
-								<span style="float: right;">
-									<button id="login">Login</button>
-									<button id="register">register</button>
-								</span>
-						    </c:otherwise>
-					    </c:choose>
-					</ul>
-				</nav>
-			</header>
+		<!-- header -->
+		<%@ include file="/WEB-INF/views/common/header.jsp"%>
+		
 			<br/>
 			<!-- Form -->
 			<form:form id="registerForm" modelAttribute="member" action="${pageContext.request.contextPath}/views/index/loginConfirm" method="post">

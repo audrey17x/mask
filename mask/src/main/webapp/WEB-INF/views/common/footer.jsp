@@ -30,3 +30,15 @@
 		</span>
 	</div>
 </footer>
+<form:form modelAttribute="product" id="productTarget" action="${pageContext.request.contextPath}/views/product/show" method="post">
+</form:form>	
+<form:form modelAttribute="product" id="indexTarget" action="${pageContext.request.contextPath}/views/index/init" method="get">
+</form:form>	
+<form:form modelAttribute="product" id="registerTarget" action="${pageContext.request.contextPath}/views/index/register" method="get">
+</form:form>	
+<form:form modelAttribute="product" id="loginTarget" action="${pageContext.request.contextPath}/views/index/login" method="get">
+</form:form>	
+<form:form modelAttribute="product" id="outTarget" action="${pageContext.request.contextPath}/views/index/out" method="post">
+</form:form>		
+<form:form modelAttribute="product" id="reportTarget" action="${pageContext.request.contextPath}/views/report/init" method="post">
+</form:form>	

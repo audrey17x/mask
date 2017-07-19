@@ -140,36 +140,8 @@
 	</script>
 	<body id="top">
 		<!-- header -->
-		<header class="header"> 
-			<nav class="nav">
-				<ul>
-					<!-- office -->
-					<span>
-						<button id="home">Home</button>
-						<button id="about">About</button>
-						<button id="product">Product</button>
-						<button id="shop">Shop</button>
-						<button id="contact">Contact</button>
-					</span>
-					<!-- social  -->
-					    <c:choose>
-					        <c:when test="${sessionScope.result == 'success'}">
-								<span style="float: right;">
-									您好！<c:out value="${member.name}"/>
-									<button id="out">out</button>
-								</span>
-					    	</c:when>
-						    <c:otherwise>
-								<!-- social  -->
-								<span style="float: right;">
-									<button id="login">Login</button>
-									<button id="register">register</button>
-								</span>
-						    </c:otherwise>
-					    </c:choose>
-				</ul>
-			</nav> 
-		</header>
+		<%@ include file="/WEB-INF/views/common/header.jsp"%>
+		
 		<a href="#" id="header">Header</a>
 		<!-- Main -->
 		<div id="main">
