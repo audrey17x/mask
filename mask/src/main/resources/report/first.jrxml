@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-07-16T23:11:59 -->
+<!-- 2017-07-19T15:08:54 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73dc9355-6f79-41d0-b8f5-351b794fd29a">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -33,6 +33,9 @@
 	<field name="stock" class="java.math.BigDecimal"/>
 	<field name="sales" class="java.math.BigDecimal"/>
 	<field name="salesPercentage" class="java.lang.String"/>
+	<variable name="salesSum" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{sales}]]></variableExpression>
+	</variable>
 	<pageHeader>
 		<band height="56" splitType="Stretch">
 			<subreport>
@@ -173,6 +176,24 @@
 			</subreport>
 		</band>
 	</pageFooter>
+	<summary>
+		<band height="30">
+			<textField>
+				<reportElement x="440" y="0" width="60" height="30" uuid="34a88107-67fc-4ee9-be6e-2b7c2de362a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{salesSum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="28e1395e-d4c8-49c9-a111-fb12ad71c38b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="kaiu"/>
+				</textElement>
+				<text><![CDATA[合計]]></text>
+			</staticText>
+		</band>
+	</summary>
 	<noData>
 		<band height="40"/>
 	</noData>
