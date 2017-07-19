@@ -25,7 +25,7 @@ import com.shell.service.MaskService;
  */
 @Controller
 @RequestMapping("/product")
-public class ProductAction {
+public class ProductController {
 	
 	@Autowired
 	private MaskService maskService;

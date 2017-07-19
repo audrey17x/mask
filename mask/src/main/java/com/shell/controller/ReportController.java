@@ -32,7 +32,7 @@ import com.shell.service.MaskService;
  */
 @Controller
 @RequestMapping("/report")
-public class ReportAction {
+public class ReportController {
 	
 	@Autowired
 	private MaskService dtoService;

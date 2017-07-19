@@ -33,7 +33,7 @@ import com.shell.service.OrderService;
  */
 @Controller
 @RequestMapping("/order")
-public class OrderAction {
+public class OrderController {
 	
 	@Autowired
 	private MaskService maskService;
