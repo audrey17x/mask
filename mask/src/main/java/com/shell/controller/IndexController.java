@@ -28,7 +28,7 @@ import com.shell.service.MemberService;
  */
 @Controller
 @RequestMapping("/index")
-public class IndexAction {
+public class IndexController {
 	
 	@Autowired
 	private MaskService maskService;
