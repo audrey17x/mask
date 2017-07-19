@@ -3,6 +3,7 @@ package com.shell.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.shell.dao.OrderDetailDao;
 import com.shell.model.OrderDetail;
@@ -18,6 +19,7 @@ import com.shell.service.OrderDetailService;
  *
  * Copyright © 2016 Shell. All rights reserved
  */
+@Service("orderDetailService")
 public class OrderDetailServiceImpl implements OrderDetailService{
 	
 	@Autowired

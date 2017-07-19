@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.shell.dao.MaskDao;
 import com.shell.model.Product;
@@ -18,6 +19,7 @@ import com.shell.service.MaskService;
  *
  * Copyright © 2016 Shell. All rights reserved
  */
+@Service("maskService")
 public class MaskServiceImpl implements MaskService{
 	
 	@Autowired

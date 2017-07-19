@@ -18,6 +18,21 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
+	<context:annotation-config />
+	<mvc:annotation-driven />
+	<context:component-scan
+		base-package="com.shell.model,com.shell.dao.impl,com.shell.service.impl,com.shell.controller">
+	</context:component-scan>
+
+	<!-- 前綴屬性會與ModelAndView返回的路徑資訊結合，ex: private static String PAGE = "report/print.jsp";
+	則結合為/WEB-INF/views/report/print.jsp-->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+	</bean>
+	
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<!-- <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/> -->
@@ -30,34 +45,5 @@
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 	</bean>
-
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix">
-			<value>/WEB-INF/views/</value>
-		</property>
-	</bean>
-
-	<context:annotation-config />
-
-	<context:component-scan
-		base-package="com.shell.model,com.shell.dao.impl,com.shell.service.impl,com.shell.controller">
-	</context:component-scan>
-	
-	<bean id="maskService" class="com.shell.service.impl.MaskServiceImpl" />
-	
-	<bean id="memberService" class="com.shell.service.impl.MemberServiceImpl" />
-	
-	<bean id="orderService" class="com.shell.service.impl.OrderServiceImpl" />
-	
-	<bean id="orderDetailService" class="com.shell.service.impl.OrderDetailServiceImpl" />
-	
-	<bean id="maskDao" class="com.shell.dao.impl.MaskDaoImpl" />
-	
-	<bean id="orderDao" class="com.shell.dao.impl.OrderDaoImpl" />
-	
-	<bean id="orderDetailDao" class="com.shell.dao.impl.OrderDetailDaoImpl" />
-	
-	<bean id="memberDao" class="com.shell.dao.impl.MemberDaoImpl" />
 
 </beans>

@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import com.shell.HibernateUtil;
 import com.shell.dao.MemberDao;
@@ -24,6 +25,7 @@ import com.shell.model.Product;
  *
  * Copyright © 2016 Shell. All rights reserved
  */
+@Repository
 public class MemberDaoImpl implements MemberDao{
 	
 	@PersistenceContext

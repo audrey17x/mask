@@ -3,6 +3,7 @@ package com.shell.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.shell.dao.MemberDao;
 import com.shell.model.Member;
@@ -18,6 +19,7 @@ import com.shell.service.MemberService;
  *
  * Copyright © 2016 Shell. All rights reserved
  */
+@Service("memberService")
 public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
