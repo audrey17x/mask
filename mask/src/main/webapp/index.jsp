@@ -348,9 +348,11 @@
 			</form:form>
 		</div>
 		<!-- body end-->
+		
 		<!-- 移至頂端 -->
 		<pre></pre>
 		<div id="gotop">˄</div>
+		
 		<!-- Footer -->
 		<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	</body>

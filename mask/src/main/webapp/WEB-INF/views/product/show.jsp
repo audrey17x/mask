@@ -14,130 +14,129 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/car/reset.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/car/htmleaf-demo.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/car/style.css"> <!-- Resource style -->
+	
+		<!-- Scripts -->
+		<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
+		
+		<!-- 網站設計 -->
+		<!-- Scripts -->
+		<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery.scrolly.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery.poptrox.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/skel.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/util.js"></script>
+		<script src="${pageContext.request.contextPath}/js/main.js"></script>
+		<script src="${pageContext.request.contextPath}/js/car/main.js"></script>
+		<style type="text/css">
+			.header {
+				height: 60px;
+				width: 100%;
+				top: 0;
+				position: fixed;
+				background-color: black;
+			}
+			.nav {
+				height: 100px;
+				padding: 10px;
+				background-attachment: fixed;
+				line-hight: 29px;
+				/*text-align: left;*/
+			}
+			#gotop {
+			    display: none;
+			    position: fixed;
+			    right: 20px;
+			    bottom: 20px;    
+			    padding: 10px 15px;    
+			    font-size: 20px;
+			    background: #777;
+			    color: white;
+			    cursor: pointer;
+			}
+		</style>
+		<script>
+			/*  login 彈現  對話視窗 */
+			$(document).ready(function() {
+				$('#Login').click(function() {
+					$.blockUI({
+						message : $('#form-login')
+					});
+			
+					setTimeout($.unblockUI, 2000);
+				});
+				/*login end*/
+				/* 下拉 連接畫面  */
+				$('#About').click(function() {
+					$('html,body').animate({
+						scrollTop : $('#AboutTitle').offset().top
+					}, 800);
+				});
+			
+				$('#Product').click(function() {
+					$('html,body').animate({
+						scrollTop : $('#ProductTitle').offset().top
+					}, 800);
+				});
+			
+				$('#Shop').click(function() {
+					$('html,body').animate({
+						scrollTop : $('#ShopTitle').offset().top
+					}, 800);
+				});
+			
+				$('#Contact').click(function() {
+					$('html,body').animate({
+						scrollTop : $('#ContactTitle').offset().top
+					}, 800);
+				});
+				/*
+				$(function(){
+					// 幫 a.abgne_gotoheader 加上 click 事件
+					$('a.abgne_gotoheader').click(function(){
+						// 讓捲軸用動畫的方式移動到 0 的位置
+						// 感謝網友 sam 修正 Opera 問題
+						var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+						$body.animate({
+							scrollTop: 0
+						}, 600);
+				 
+						return false;
+					});
+				});
+				*/
+				$(function(){
+				    $("#gotop").click(function(){
+				        jQuery("html,body").animate({
+				            scrollTop:0
+				        },1000);
+				    });
+				    $(window).scroll(function() {
+				        if ( $(this).scrollTop() > 300){
+				            $('#gotop').fadeIn("fast");
+				        } else {
+				            $('#gotop').stop().fadeOut("fast");
+				        }
+				    });
+				});
+				
+				
+				$("#checkout").click(function() {
+					  $("#productCheckout").submit();
+				});	
+				
+				$("#home").click(function() {
+					  $("#indexTarget").submit();
+				});	
+				
+				$("#product").click(function() {
+					  $("#productTarget").submit();
+				});	
+				
+			});
+		/* 下拉 連接畫面  end*/
+		</script>
 	</head>
-	<!-- car -->
-	
-	<!-- Scripts -->
-	<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
-	
-	<!-- 網站設計 -->
-	<!-- Scripts -->
-	<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/jquery.scrolly.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/jquery.poptrox.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/util.js"></script>
-	<script src="${pageContext.request.contextPath}/js/main.js"></script>
-	<script src="${pageContext.request.contextPath}/js/car/main.js"></script>
-	<style type="text/css">
-		.header {
-			height: 60px;
-			width: 100%;
-			top: 0;
-			position: fixed;
-			background-color: black;
-		}
-		.nav {
-			height: 100px;
-			padding: 10px;
-			background-attachment: fixed;
-			line-hight: 29px;
-			/*text-align: left;*/
-		}
-		#gotop {
-		    display: none;
-		    position: fixed;
-		    right: 20px;
-		    bottom: 20px;    
-		    padding: 10px 15px;    
-		    font-size: 20px;
-		    background: #777;
-		    color: white;
-		    cursor: pointer;
-		}
-	</style>
-	<script>
-		/*  login 彈現  對話視窗 */
-		$(document).ready(function() {
-			$('#Login').click(function() {
-				$.blockUI({
-					message : $('#form-login')
-				});
-		
-				setTimeout($.unblockUI, 2000);
-			});
-			/*login end*/
-			/* 下拉 連接畫面  */
-			$('#About').click(function() {
-				$('html,body').animate({
-					scrollTop : $('#AboutTitle').offset().top
-				}, 800);
-			});
-		
-			$('#Product').click(function() {
-				$('html,body').animate({
-					scrollTop : $('#ProductTitle').offset().top
-				}, 800);
-			});
-		
-			$('#Shop').click(function() {
-				$('html,body').animate({
-					scrollTop : $('#ShopTitle').offset().top
-				}, 800);
-			});
-		
-			$('#Contact').click(function() {
-				$('html,body').animate({
-					scrollTop : $('#ContactTitle').offset().top
-				}, 800);
-			});
-			/*
-			$(function(){
-				// 幫 a.abgne_gotoheader 加上 click 事件
-				$('a.abgne_gotoheader').click(function(){
-					// 讓捲軸用動畫的方式移動到 0 的位置
-					// 感謝網友 sam 修正 Opera 問題
-					var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
-					$body.animate({
-						scrollTop: 0
-					}, 600);
-			 
-					return false;
-				});
-			});
-			*/
-			$(function(){
-			    $("#gotop").click(function(){
-			        jQuery("html,body").animate({
-			            scrollTop:0
-			        },1000);
-			    });
-			    $(window).scroll(function() {
-			        if ( $(this).scrollTop() > 300){
-			            $('#gotop').fadeIn("fast");
-			        } else {
-			            $('#gotop').stop().fadeOut("fast");
-			        }
-			    });
-			});
-			
-			
-			$("#checkout").click(function() {
-				  $("#productCheckout").submit();
-			});	
-			
-			$("#home").click(function() {
-				  $("#indexTarget").submit();
-			});	
-			
-			$("#product").click(function() {
-				  $("#productTarget").submit();
-			});	
-			
-		});
-	/* 下拉 連接畫面  end*/
-	</script>
 	<body id="top">
 		<!-- header -->
 		<%@ include file="/WEB-INF/views/common/header.jsp"%>

@@ -4,18 +4,24 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/order/main.css" />
+		<!-- header -->
+		<%@ include file="/WEB-INF/views/common/head.jsp"%>
+		<!-- css -->
+		<%@ include file="/WEB-INF/views/common/css.jsp"%>
+		<!-- script -->
+		<%@ include file="/WEB-INF/views/common/script.jsp"%>
+		<script src="${pageContext.request.contextPath}/js/common/common.js" type="text/javascript"></script>
+		
+		<!-- 線上免費網頁樣式   所使用的檔案 -->
+		
+		<script src="${pageContext.request.contextPath}/js/templated/skel.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/templated/util.js"></script>
+		<script src="${pageContext.request.contextPath}/js/templated/main.js"></script>
 	</head>
-	<!-- Scripts -->
-<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/skel.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
 	<body>
 		<!-- header -->
 		<%@ include file="/WEB-INF/views/common/header.jsp"%>
+		
 		<form:form modelAttribute="productList" id="productCheckout" action="${pageContext.request.contextPath}/views/order/save" method="post">
 			<!-- Table -->
 			<section>
@@ -64,6 +70,7 @@
 				</div>
 			</section>
 		</form:form>	
+		
 		<!-- Footer -->
 		<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	</body>

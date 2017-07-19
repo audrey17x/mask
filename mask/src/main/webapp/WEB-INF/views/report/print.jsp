@@ -60,6 +60,12 @@
 					$('#qForm').prop('action', "./exportPdfOfTableElement");
 				  	$('#qForm').submit();	
 				});	
+				
+				
+				$("#submit").click(function() {
+					pdfBtnEvent();
+				});	
+				
 			});
 			
 			
@@ -97,7 +103,6 @@
 		<!-- header -->
 		<%@ include file="/WEB-INF/views/common/header.jsp"%>
 		
-		
 		<fieldset>
 			<legend>查詢條件</legend>
 			<form:form modelAttribute="productList" id="qForm" action="${pageContext.request.contextPath}/views/report/exportPdf" method="post">
@@ -111,7 +116,7 @@
 						</tr>	
 						<tr>
 							<td>
-								<input type="submit" value="列印"/>
+								<button id="submit">列印</button>
 							</td>
 						</tr>
 						<tr>
@@ -124,14 +129,7 @@
 			</form:form>	
 		</fieldset>		
 		
-		<pre></pre >
-		<!--  <a href="#header" class="abgne_gotoheader button">Go To Header</a>-->
-		<div id="gotop">˄</div>
 		<!-- Footer -->
 		<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-		<form:form modelAttribute="product" id="productTarget" action="${pageContext.request.contextPath}/views/product/show" method="post">
-		</form:form>				
-		<form:form modelAttribute="product" id="indexTarget" action="${pageContext.request.contextPath}/views/index/init" method="get">
-		</form:form>					
 	</body>
 </html>

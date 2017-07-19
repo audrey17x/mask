@@ -5,17 +5,15 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<title>卸下你的。真面目</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<!-- 網站設計css -->
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" />
-		<!-- Modernizr -->
-		<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
-		<!-- <script src="jquery.blockUI.js"></script> -->
-		<script src="${pageContext.request.contextPath}/js/jquery.blockUI.js"></script>
-		<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
+		<!-- header -->
+		<%@ include file="/WEB-INF/views/common/head.jsp"%>
+		<!-- css -->
+		<%@ include file="/WEB-INF/views/common/css.jsp"%>
+		<!-- script -->
+		<%@ include file="/WEB-INF/views/common/script.jsp"%>
+		<script src="${pageContext.request.contextPath}/js/common/common.js" type="text/javascript"></script>
+		
+		
 		<!-- Resource style -->
 		<style type="text/css">
 		#gotop {
@@ -156,44 +154,6 @@
 		</style>
 		<script>
 			$(document).ready(function() {
-				
-				/*
-				$('#login').click(function() {
-					$.blockUI({
-						message : $('#formLogin')
-					});
-				});
-				
-				$('#loginButton').click(function() {
-					$.blockUI({
-						message : $('#formLogin')
-					});
-				});				
-				
-				$('#registerButton').click(function() {
-					$.blockUI({
-						message : $('#registerDiv')
-					});
-				});
-				
-				$('#cancel').click(function() {
-					$.unblockUI(); 
-				});
-				
-				$('#cancelRegister').click(function() {
-					$.unblockUI(); 
-				});
-				
-				$("#registerSubmit").click(function() {
-					$("#registerForm").validate();
-					$("#registerForm").submit();
-				});	
-				
-				*/
-				
-
-				
-				
 				$(function() {
 					$("#gotop").click(function() {
 						jQuery("html,body").animate({
@@ -208,59 +168,29 @@
 						}
 					});
 				});
-				
-				
-				$("#home").click(function() {
-					  $("#indexTarget").submit();
-				});	
-				
-				$("#product").click(function() {
-					  $("#productTarget").submit();
-				});	
-				
-				$("#register").click(function() {
-					  $("#registerTarget").submit();
-				});	
-				
-				$("#login").click(function() {
-					  $("#loginTarget").submit();
-				});	
-				
-				$("#out").click(function() {
-					  $("#outTarget").submit();
-				});	
-				
-				$("#formLogin").hide();
-				$("#registerDiv").hide();
-		
 			});
 		</script>
 	</head>
 	<body>
 		<!-- header -->
 		<%@ include file="/WEB-INF/views/common/header.jsp"%>
-			<a href="#" id="header">Header</a>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-				<form:form modelAttribute="productList" id="productCheckout" action="${pageContext.request.contextPath}/views/order/save" method="post">
-					<!-- Table -->
-						<section>
-							<h2 style="text-align:center;">恭喜您完成訂購！</h2>
-						</section>
-				</form:form>	
+		
+		<a href="#" id="header">Header</a>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<form:form modelAttribute="productList" id="productCheckout" action="${pageContext.request.contextPath}/views/order/save" method="post">
+			<!-- Table -->
+				<section>
+					<h2 style="text-align:center;">恭喜您完成訂購！</h2>
+				</section>
+		</form:form>	
+				
 		<!-- Footer -->
 		<%@ include file="/WEB-INF/views/common/footer.jsp"%>		
-		<form:form modelAttribute="product" id="productTarget" action="${pageContext.request.contextPath}/views/product/show" method="post">
-		</form:form>	
-		<form:form modelAttribute="product" id="indexTarget" action="${pageContext.request.contextPath}/views/index/init" method="get">
-		</form:form>	
-		<form:form modelAttribute="product" id="registerTarget" action="${pageContext.request.contextPath}/views/index/register" method="get">
-		</form:form>				
-
 	</body>
 </html>
