@@ -34,7 +34,7 @@ import com.shell.service.MaskService;
  *
  * @author Shell
  *
- * Copyright © 2016 Shell. All rights reserved
+ * Copyright © 2017 Shell. All rights reserved
  */
 @Controller
 @RequestMapping("/report")
@@ -141,22 +141,11 @@ public class ReportController {
 			Map<String, Object> map = initMap(req);
             
 			List<Product> dtoList = initReturnList(map);
-			      
-	    	String csvFileName = DESCRIPTION+"_"+ DateUtil.converToString(new Date(), "yyyyMMddHHmmss") + ".csv";
-
-	    	// 設定生成格式
-			response.setContentType("application/octet-stream; charset=UTF-8");
-			response.setHeader("Content-disposition", "attachment;filename=" + new String(csvFileName.getBytes("BIG5"), "ISO8859_1"));
 			
 			String title = DESCRIPTION;
-	        
 	        if(!StringUtils.isEmpty((String) map.get("priceStr"))) {
 	        	title = title +"\n" + "價格：" + map.get("priceStr") + "~" + map.get("priceEnd");
 	        }
-	        
-	        title = title + "\n\n";
-            
-			response.getOutputStream().write((title).getBytes("BIG5"));
 			 
 			List<List<Object>> list = new ArrayList<List<Object>>();
 			
@@ -212,15 +201,7 @@ public class ReportController {
 			               
 			list.add(rows);
     		
-    		writerCSV(list, response);
-    		
-    		response.getOutputStream().write(("\n\n" + REOPRT_NAME).getBytes("BIG5"));
-    		response.getOutputStream().flush();
-			response.getOutputStream().close();		
-			
-//			嚴重: Servlet.service() for servlet [mvc-dispatcher] in context with path [/mask] threw exception [java.lang.IllegalStateException: getOutputStream() has already been called for this response] with root cause
-//			java.lang.IllegalStateException: getOutputStream() has already been called for this response			
-//			PrintWriter out = response.getWriter();
+			ReportUtil.writerCSV(list, DESCRIPTION, title, REOPRT_NAME,  response);
 			
     	} catch (Exception e) {
 		}
@@ -244,21 +225,4 @@ public class ReportController {
 		return drrsList;
 	}
     
-	public String validateNull(Object obj) throws Exception {
-		return StringUtils.isEmpty((String) obj) ? "" : (String) obj;
-	}
-	
-	public void writerCSV(List<List<Object>> list, HttpServletResponse response) throws IOException {
-		StringBuffer str = new StringBuffer();
-		
-		for(List<Object> rows : list) {
-			for(Object row : rows) {
-				str.append(row).append(",");
-			}
-			str.append("\n");
-		}
-		
-		response.getOutputStream().write((str.toString()).getBytes("BIG5"));
-	}    
-	
 }
