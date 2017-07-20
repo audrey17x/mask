@@ -8,8 +8,12 @@
 		});	
 		
 		
-		$("#submit").click(function() {
+		$("#exportPdf").click(function() {
 			pdfBtnEvent();
+		});	
+		
+		$("#exportCsv").click(function() {
+			csvBtnEvent();
 		});	
 		
 	});
@@ -22,10 +26,8 @@
 	}
 	
 	function csvBtnEvent(){
-		if (chkColumns()) {
-			$('#qForm').prop('action', "./exportCsv");
-		  	$('#qForm').submit();		
-		}
+		$('#qForm').prop('action', "./exportCsv");
+	  	$('#qForm').submit();		
 	}
 	
 	function chkColumns(){
@@ -48,21 +50,24 @@
 	<form:form modelAttribute="productList" id="qForm" action="${pageContext.request.contextPath}/views/report/exportPdf" method="post">
 		<div id="conditionBox">
 			<table style="width: 100%">
+				<br/>
+				<br/>
 				<tr>
-					<td>
+					<td colspan="3">
 						<label>價格：</label>
 						<input type="text" name="priceStr" value="500">&nbsp;~&nbsp;<input type="text" name="priceEnd" value="800">
 					</td>
 				</tr>	
 				<tr>
 					<td>
-						<button id="submit">列印</button>
+						<button id="exportPdf">列印</button>
 					</td>
-				</tr>
-				<tr>
 					<td>
 						<button id="tableElement">表格元素版本的列印</button>
-					</td>
+					</td>		
+					<td>
+						<button id="exportCsv">下載CSV</button>
+					</td>								
 				</tr>
 			</table>
 		</div>

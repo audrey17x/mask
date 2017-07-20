@@ -1,22 +1,27 @@
 package com.shell.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shell.common.DateUtil;
 import com.shell.common.ReportUtil;
 import com.shell.constant.Constant;
 import com.shell.model.Member;
@@ -123,6 +128,105 @@ public class ReportController {
 			throw e;
 		}
 	}
+	
+	/**
+     * 匯出CSV
+     * @param request
+     * @return
+     */
+	@RequestMapping(value = "/exportCsv", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView exportCsv(HttpServletRequest req, HttpServletResponse response) {
+
+    	try {
+			Map<String, Object> map = initMap(req);
+            
+			List<Product> dtoList = initReturnList(map);
+			      
+	    	String csvFileName = DESCRIPTION+"_"+ DateUtil.converToString(new Date(), "yyyyMMddHHmmss") + ".csv";
+
+	    	// 設定生成格式
+			response.setContentType("application/octet-stream; charset=UTF-8");
+			response.setHeader("Content-disposition", "attachment;filename=" + new String(csvFileName.getBytes("BIG5"), "ISO8859_1"));
+			
+			String title = DESCRIPTION;
+	        
+	        if(!StringUtils.isEmpty((String) map.get("priceStr"))) {
+	        	title = title +"\n" + "價格：" + map.get("priceStr") + "~" + map.get("priceEnd");
+	        }
+	        
+	        title = title + "\n\n";
+            
+			response.getOutputStream().write((title).getBytes("BIG5"));
+			 
+			List<List<Object>> list = new ArrayList<List<Object>>();
+			
+			List<Object> rows = new ArrayList<Object>();
+			rows.add("產品名稱");
+			rows.add("適用膚質");
+			rows.add("效果");
+			rows.add("價格");
+			rows.add("庫存");
+			rows.add("銷售量");
+			rows.add("銷售比例");
+			
+			list.add(rows);
+			
+			BigDecimal salesSum = BigDecimal.ZERO;
+			
+			for(Product dto : dtoList) {
+				String salesPercentage = "0%";
+				BigDecimal sales = dto.getSales();
+				BigDecimal stock = dto.getStock();
+				//兩者乘除皆不得為零
+		        if(dto.getSales().compareTo(BigDecimal.ZERO) > 0 && dto.getStock().compareTo(BigDecimal.ZERO) > 0) {
+		        	//計算 銷售百分比 ，最後加上 %
+		        	salesPercentage = sales.divide(stock, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)).setScale(2,BigDecimal.ROUND_HALF_UP).toString().concat("%");
+		        }
+				dto.setSalesPercentage(salesPercentage);
+				
+    			rows = new ArrayList<Object>();
+	             
+    			rows.add(dto.getName());
+    			rows.add(dto.getSkinType());
+    			rows.add(dto.getFeature());
+    			rows.add(dto.getPrice());
+    			rows.add(dto.getStock());
+    			rows.add(dto.getSales());
+    			rows.add(dto.getSalesPercentage());
+    			               
+    			list.add(rows);
+    			
+    			salesSum = salesSum.add(dto.getSales());
+			}
+			
+			rows = new ArrayList<Object>();
+			list.add(rows);
+			     
+			rows = new ArrayList<Object>();
+			rows.add("合計");
+			rows.add("");
+			rows.add("");
+			rows.add("");
+			rows.add("");
+			rows.add(salesSum);
+			               
+			list.add(rows);
+    		
+    		writerCSV(list, response);
+    		
+    		response.getOutputStream().write(("\n\n" + REOPRT_NAME).getBytes("BIG5"));
+    		response.getOutputStream().flush();
+			response.getOutputStream().close();		
+			
+//			嚴重: Servlet.service() for servlet [mvc-dispatcher] in context with path [/mask] threw exception [java.lang.IllegalStateException: getOutputStream() has already been called for this response] with root cause
+//			java.lang.IllegalStateException: getOutputStream() has already been called for this response			
+//			PrintWriter out = response.getWriter();
+			
+    	} catch (Exception e) {
+		}
+		
+    	return new ModelAndView(Constant.TEMPLATE_PAGE);
+	}	
 	                                              
     public Map<String, Object> initMap(HttpServletRequest request) throws Exception {
 		
