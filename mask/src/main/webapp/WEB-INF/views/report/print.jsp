@@ -106,6 +106,14 @@
 		<fieldset>
 			<legend>查詢條件</legend>
 			<form:form modelAttribute="productList" id="qForm" action="${pageContext.request.contextPath}/views/report/exportPdf" method="post">
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
 				<div id="conditionBox">
 					<table style="width: 100%">
 						<tr>

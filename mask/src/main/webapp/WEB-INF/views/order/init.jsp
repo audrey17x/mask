@@ -13,7 +13,6 @@
 		<script src="${pageContext.request.contextPath}/js/common/common.js" type="text/javascript"></script>
 		
 		<!-- 線上免費網頁樣式   所使用的檔案 -->
-		
 		<script src="${pageContext.request.contextPath}/js/templated/skel.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/templated/util.js"></script>
 		<script src="${pageContext.request.contextPath}/js/templated/main.js"></script>

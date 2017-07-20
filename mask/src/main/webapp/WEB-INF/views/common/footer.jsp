@@ -2,6 +2,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE>
+<!-- 移至頂端 -->
+<pre></pre >
+<div id="gotop">˄</div>
+
 <footer id="footer">
 	<div class="inner">
 		<p style="color: #007799">

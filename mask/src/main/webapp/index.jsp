@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/taglibs.jsp" %>
 <!DOCTYPE>
 <html>
 	<head>
@@ -12,20 +10,12 @@
 		<!-- script -->
 		<%@ include file="/WEB-INF/views/common/script.jsp"%>
 		<script src="${pageContext.request.contextPath}/js/common/common.js" type="text/javascript"></script>
-
+		<% response.setHeader("Cache-Control","no-cache"); //HTTP 1.1 
+		 response.setHeader("Pragma","no-cache"); //HTTP 1.0 
+		 response.setDateHeader ("Expires", 0); //prevents caching at the proxy server  
+		%>
 		<!-- Resource style -->
 		<style type="text/css">
-		#gotop {
-			display: none;
-			position: fixed;
-			right: 20px;
-			bottom: 20px;
-			padding: 10px 15px;
-			font-size: 20px;
-			background: #777;
-			color: white;
-			cursor: pointer;
-		}
 		
 		/* body */
 		.cd-fixed-bg1 {
@@ -75,15 +65,6 @@
 		
 		.cd-container {
 			text-align: justify;
-		}
-		
-		/*-- header */
-		.nav {
-			height: 100px;
-			padding: 10px;
-			background-attachment: fixed;
-			line-hight: 29px;
-			/*text-align: left;*/
 		}
 		
 		a {
@@ -154,55 +135,6 @@
 		<script>
 			$(document).ready(function() {
 				
-				/*
-				$('#login').click(function() {
-					$.blockUI({
-						message : $('#formLogin')
-					});
-				});
-				
-				$('#loginButton').click(function() {
-					$.blockUI({
-						message : $('#formLogin')
-					});
-				});				
-				
-				$('#registerButton').click(function() {
-					$.blockUI({
-						message : $('#registerDiv')
-					});
-				});
-				
-				$('#cancel').click(function() {
-					$.unblockUI(); 
-				});
-				
-				$('#cancelRegister').click(function() {
-					$.unblockUI(); 
-				});
-				
-				$("#registerSubmit").click(function() {
-					$("#registerForm").validate();
-					$("#registerForm").submit();
-				});	
-				
-				*/
-				
-				$(function() {
-					$("#gotop").click(function() {
-						jQuery("html,body").animate({
-							scrollTop : 0
-						}, 1000);
-					});
-					$(window).scroll(function() {
-						if ($(this).scrollTop() > 300) {
-							$('#gotop').fadeIn("fast");
-						} else {
-							$('#gotop').stop().fadeOut("fast");
-						}
-					});
-				});
-				
 			});
 		</script>
 	</head>
@@ -213,17 +145,17 @@
 		<!-- body-->
 		<div id="AboutTitle" class="cd-fixed-bg1" style="text-align: center;">
 		</br>
-				</br>
-				</br>
-				</br>
-				</br>
-				</br>
-				</br>
-				</br>
-				</br>
-				
-				<font face="monospace" size="10" color="white" ><b>卸下你的。你的真面目.....</b></font>
-					<img src="${pageContext.request.contextPath}/img/icon/mask.ico"	height="150"/>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			
+			<font face="monospace" size="10" color="white" ><b>卸下你的。你的真面目.....</b></font>
+				<img src="${pageContext.request.contextPath}/img/icon/mask.ico"	height="150"/>
 		</div>
 	
 		<div class="cd-scrolling-bg cd-color1">
@@ -233,15 +165,15 @@
 				</br>
 				<h2 style="color: #33CCFF;">About Us</h2>
 				<p style="color: grey;">
-					有實力。經得起考驗~~不怕被懷疑!!</br> 法國上架的必備條件－需經過最嚴格的檢驗證實效果。 </br> Institut
-					d‘ExpertiseClinique跟EvicFrance是法國專門測試化妝保養品品質的檢驗室。</br>
+					有實力。經得起考驗~~不怕被懷疑!!</br> 
+					法國上架的必備條件－需經過最嚴格的檢驗證實效果。 </br> 
+					Institutd‘ExpertiseClinique跟EvicFrance是法國專門測試化妝保養品品質的檢驗室。</br>
 					卸下你的。你的真面目面膜與許多國際知名化妝保養品，都與IEC或EvicFrance合作多次經驗。</br>
 					由英國領導美妝雜誌所舉辦，邀請專業美容顧問、美容俱樂部會員與讀者們共同票選，</br>
 					卸下你的。你的真面目面膜在2016年首次入圍最佳新秀面膜獎，打敗來自各國的國際品牌，成為2016年的新秀面膜獎冠軍！</br>
-					天下沒有醜女人，只有懶女人!</br> 你準備好了嗎 !!
+					天下沒有醜女人，只有懶女人!</br> 
+					你準備好了嗎 !!
 				</p>
-	
-	
 			</div>
 		</div>
 		<!-- repeat 結構*4 -->
@@ -258,15 +190,15 @@
 				</br>
 				<h2 style="color: #33CCFF;">Inspection Report</h2>
 				<p style="color: grey;">
-					有實力。經得起考驗~~不怕被懷疑!!</br> 法國上架的必備條件－需經過最嚴格的檢驗證實效果。 </br> Institut
-					d‘ExpertiseClinique跟EvicFrance是法國專門測試化妝保養品品質的檢驗室。</br>
+					有實力。經得起考驗~~不怕被懷疑!!</br> 
+					法國上架的必備條件－需經過最嚴格的檢驗證實效果。 </br> 
+					Institutd‘ExpertiseClinique跟EvicFrance是法國專門測試化妝保養品品質的檢驗室。</br>
 					卸下你的。你的真面目面膜與許多國際知名化妝保養品，都與IEC或EvicFrance合作多次經驗。</br>
 					由英國領導美妝雜誌所舉辦，邀請專業美容顧問、美容俱樂部會員與讀者們共同票選，</br>
 					卸下你的。你的真面目面膜在2016年首次入圍最佳新秀面膜獎，打敗來自各國的國際品牌，成為2016年的新秀面膜獎冠軍！</br>
-					天下沒有醜女人，只有懶女人!</br> 你準備好了嗎 !!
+					天下沒有醜女人，只有懶女人!</br> 
+					你準備好了嗎 !!
 				</p>
-	
-	
 			</div>
 		</div>
 	
@@ -280,42 +212,21 @@
 				</br>
 				<h2 style="color: #33CCFF;">Future Prospects</h2>
 				<p style="color: grey;">
-					有實力。經得起考驗~~不怕被懷疑!!</br> 法國上架的必備條件－需經過最嚴格的檢驗證實效果。 </br> Institut
-					d‘ExpertiseClinique跟EvicFrance是法國專門測試化妝保養品品質的檢驗室。</br>
+					有實力。經得起考驗~~不怕被懷疑!!</br> 
+					法國上架的必備條件－需經過最嚴格的檢驗證實效果。 </br> 
+					Institutd‘ExpertiseClinique跟EvicFrance是法國專門測試化妝保養品品質的檢驗室。</br>
 					卸下你的。你的真面目面膜與許多國際知名化妝保養品，都與IEC或EvicFrance合作多次經驗。</br>
 					由英國領導美妝雜誌所舉辦，邀請專業美容顧問、美容俱樂部會員與讀者們共同票選，</br>
 					卸下你的。你的真面目面膜在2016年首次入圍最佳新秀面膜獎，打敗來自各國的國際品牌，成為2016年的新秀面膜獎冠軍！</br>
-					天下沒有醜女人，只有懶女人!</br> 你準備好了嗎 !!
+					天下沒有醜女人，只有懶女人!</br> 
+					你準備好了嗎 !!
 				</p>
 			</div>
 		</div>
 		<div id="ContactTitle" class="cd-fixed-bg4">
 			<br> <br> <br> <br> <br> <br> <br>
 			<br> <br> <br> <br> <br> <br> <br>
-			<!--  		
-			<form>
-			 <fieldset>
-	      <legend> Call Me Baby</legend>
 			
-				<div class="contactTitle">
-					<input type="text" id="name" class="contactTitleClass" name="name" placeholder="親愛的如何稱呼你"><br>
-					<input type="text" id="email" class="contactTitleClass" name="email" placeholder="輸入電子信箱"><br>
-					<textarea class="contactTitleClass" placeholder="寫下你想告訴我們的話"></textarea><br>
-					<input class="contactTitleClass" type="reset" value="重設"> 
-					<input class="contactTitleClass" type="submit" value="確認送出">
-				</div>
-				</fieldset>
-			</form>
-			
-		</div>
-	
-		<div class="cd-scrolling-bg cd-color-4">
-			<div class="cd-container">
-				<h2>About Feature</h2>
-				<p>捲動色塊内容4...</p>
-			</div>
-		</div>
-		-->
 		<div id="formLogin">
 			<form:form id="login" modelAttribute="member" action="${pageContext.request.contextPath}/views/index/login" method="post">
 				<p>
@@ -348,10 +259,6 @@
 			</form:form>
 		</div>
 		<!-- body end-->
-		
-		<!-- 移至頂端 -->
-		<pre></pre>
-		<div id="gotop">˄</div>
 		
 		<!-- Footer -->
 		<%@ include file="/WEB-INF/views/common/footer.jsp"%>
