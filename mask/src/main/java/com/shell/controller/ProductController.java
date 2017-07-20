@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shell.constant.Constant;
 import com.shell.model.Member;
 import com.shell.model.Product;
 import com.shell.service.MaskService;
@@ -52,13 +53,29 @@ public class ProductController {
 //	public String show(ModelMap model) {
 	public ModelAndView show(HttpServletRequest req, HttpServletResponse res) {
 		
-//		String id = req.getParameter("id");
+		req.setAttribute(Constant.PARTIAL, SHOW);
+//		req.setAttribute(Constant.TEMPLATE, Constant.TEMPLATE_PAGE);
 		
 		List<Product> productList = maskService.findAll();
-		ModelAndView model = new ModelAndView(SHOW);
+		ModelAndView model = new ModelAndView(Constant.TEMPLATE_PAGE);
 		model.addObject("productList", productList);
 		model.addObject("member", member);
 		return model;	
+		
+//		return new ModelAndView(Constant.TEMPLATE_PAGE);
+		
+		
+		
+//		String id = req.getParameter("id");
+		
+//		List<Product> productList = maskService.findAll();
+//		ModelAndView model = new ModelAndView(SHOW);
+//		model.addObject("productList", productList);
+//		model.addObject("member", member);
+//		return model;	
+		
+		
+		
 //		ModelAndView model = new ModelAndView(SHOW);
 //		model.addObject("productList", productList);
 //

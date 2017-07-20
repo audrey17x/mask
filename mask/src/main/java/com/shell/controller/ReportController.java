@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shell.common.ReportUtil;
+import com.shell.constant.Constant;
 import com.shell.model.Member;
 import com.shell.model.Product;
 import com.shell.service.MaskService;
@@ -43,17 +44,22 @@ public class ReportController {
 	private static String DESCRIPTION = "第一張列印報表";
 	private static String ID = "first";
 	private static String FILE_NAME = "first.jrxml";
+	private static String REOPRT_NAME = "商品銷售報表";
 	
 	private static String DESC_OF_TABLE = "第一張列印報表表格元素版";
 	private static String ID_OF_TABLE = "firstOfTableElement";
 	private static String FILE_NAME_OF_TABLE = "firstOfTableElement.jrxml";
-	private static String REOPRT_NAME = "商品銷售報表";
+	
 	       
 	@RequestMapping(value = "/init",method = RequestMethod.POST)
 	public ModelAndView init(HttpServletRequest req, HttpServletResponse res) {
 		
 		List<Product> productList = dtoService.findAll();
-		ModelAndView model = new ModelAndView(PAGE);
+		
+		req.setAttribute(Constant.PARTIAL, PAGE);
+		req.setAttribute(Constant.TEMPLATE, Constant.TEMPLATE_PAGE);
+		
+		ModelAndView model = new ModelAndView(Constant.TEMPLATE_PAGE);
 		model.addObject("productList", productList);
 		model.addObject("member", member);
 		return model;	
@@ -86,8 +92,6 @@ public class ReportController {
   
 			//1:直向報表2:橫向報表
 			return ReportUtil.exportPdf(FILE_NAME, DESCRIPTION, ID, REOPRT_NAME, dtoList, hString, 1);
-					
-      
 		}catch(Exception e){
 			throw e;
 		}

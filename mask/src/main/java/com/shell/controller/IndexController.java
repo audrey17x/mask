@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shell.constant.Constant;
 import com.shell.model.Member;
 import com.shell.service.MaskService;
 import com.shell.service.MemberService;
@@ -44,21 +46,44 @@ public class IndexController {
 	
 	private static Member member;
 	
-	@RequestMapping(value = "/init",method = RequestMethod.GET)
-	public ModelAndView search(HttpServletRequest req, HttpServletResponse res) {
-//		String result = (String) req.getSession().getAttribute("result");
-//		if(result == null) {
-//			req.getSession().setAttribute("result", "false");
-//			ModelAndView model = new ModelAndView(LOGIN);
-//			model.addObject("member", member);
-//			return model;	
-//		}else {
-//			req.getSession().setAttribute("result", "success");
-			ModelAndView model = new ModelAndView(INIT);
-			model.addObject("member", member);
-			return model;	
+//	@RequestMapping(value = "/init",method = RequestMethod.GET)
+//	public ModelAndView search(HttpServletRequest req, HttpServletResponse res) {
+	@RequestMapping(value = "/{rrid:.+}", method = RequestMethod.GET)
+    public ModelAndView init(HttpServletRequest request,@PathVariable String rrid) {
+		
+			request.setAttribute(Constant.PARTIAL, INIT);
+			request.setAttribute(Constant.TEMPLATE, Constant.TEMPLATE_PAGE);
+			
+			return new ModelAndView(Constant.TEMPLATE_PAGE);
+			
+//			String result = (String) req.getSession().getAttribute("result");
+//			if(result == null) {
+//				req.getSession().setAttribute("result", "false");
+//				ModelAndView model = new ModelAndView(LOGIN);
+//				model.addObject("member", member);
+//				return model;	
+//			}else {
+//				req.getSession().setAttribute("result", "success");
+//				request.setAttribute(Constant.PARTIAL, INIT);
+//				request.setAttribute(Constant.PAGE, "123");
+//				request.setAttribute(Constant.PARTIAL, INIT);
+//				request.setAttribute(Constant.TEMPLATE, Constant.TEMPLATE_PAGE);
+//				ModelAndView model = new ModelAndView();
+//				model.addObject("member", member);
+//				return model;	
 //		}
 	}
+	
+//    /**
+//     * 初始頁面,查詢頁面
+//     * @param request
+//     * @return
+//     */
+//    @RequestMapping(value = "/init", method = RequestMethod.POST)
+//    public @ResponseBody ModelAndView init(HttpServletRequest request) {
+//        
+//    	return new ModelAndView();
+//    }
 	
 	@RequestMapping(value = "/login",method = RequestMethod.GET)
 	public ModelAndView login(HttpServletRequest req, HttpServletResponse res) {

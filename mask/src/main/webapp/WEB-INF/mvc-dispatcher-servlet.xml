@@ -23,16 +23,16 @@
 	<context:component-scan
 		base-package="com.shell.model,com.shell.dao.impl,com.shell.service.impl,com.shell.controller">
 	</context:component-scan>
-
+	
 	<!-- 前綴屬性會與ModelAndView返回的路徑資訊結合，ex: private static String PAGE = "report/print.jsp";
-	則結合為/WEB-INF/views/report/print.jsp-->
+		則結合為/WEB-INF/views/report/print.jsp-->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
 	</bean>
-	
+
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<!-- <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/> -->
