@@ -3,6 +3,14 @@ package com.shell;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+/**
+ * 
+ * 日期:2017年8月6日
+ * 
+ * @author Shell
+ *
+ * Copyright © 2017 Shell. All rights reserved
+ */
 public class HibernateUtil {
 
  private static final SessionFactory sessionFactory = buildSessionFactory();

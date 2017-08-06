@@ -1,13 +1,3 @@
-/**
- * 類別名稱:DateUtil
- *
- * 版本資訊:
- *
- * 日期:Aug 31, 2015
- *
- * Copyright © 2015 Stark Technology Inc. All rights reserved
- */
-
 package com.shell.common;
 
 import java.text.DateFormat;
@@ -34,8 +24,12 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 /**
- * @author Danny
+ * 
+ * 日期:2017年8月6日
+ * 
+ * @author Shell
  *
+ * Copyright © 2017 Shell. All rights reserved
  */
 public class DateUtil {
 

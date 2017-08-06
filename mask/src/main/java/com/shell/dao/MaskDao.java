@@ -7,8 +7,12 @@ import com.shell.model.Product;
 
 
 /**
+ * 
+ * 日期:2017年8月6日
+ * 
  * @author Shell
  *
+ * Copyright © 2017 Shell. All rights reserved
  */
 public interface MaskDao {
 	public List<Product> findAll();

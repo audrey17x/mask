@@ -2,6 +2,7 @@ package com.shell.report;
 
 
 import java.io.File;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
@@ -31,6 +32,14 @@ import org.springframework.web.servlet.view.AbstractView;
 
 import com.shell.common.DateUtil;
 import com.shell.common.HeaderReportDto;
+/**
+ * 
+ * 日期:2017年8月6日
+ * 
+ * @author Shell
+ *
+ * Copyright © 2017 Shell. All rights reserved
+ */
 public class JasperReportsView extends AbstractView {
 	
 	private static final Logger logger = Logger.getLogger(JasperReportsView.class);

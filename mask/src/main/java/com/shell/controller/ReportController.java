@@ -1,17 +1,13 @@
 package com.shell.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.shell.common.DateUtil;
 import com.shell.common.ReportUtil;
 import com.shell.constant.Constant;
 import com.shell.model.Member;
@@ -37,6 +32,7 @@ import com.shell.service.MaskService;
  * Copyright © 2017 Shell. All rights reserved
  */
 @Controller
+//action名稱
 @RequestMapping("/report")
 public class ReportController {
 	
@@ -55,7 +51,7 @@ public class ReportController {
 	private static String ID_OF_TABLE = "firstOfTableElement";
 	private static String FILE_NAME_OF_TABLE = "firstOfTableElement.jrxml";
 	
-	       
+	//方法名稱
 	@RequestMapping(value = "/init",method = RequestMethod.POST)
 	public ModelAndView init(HttpServletRequest req, HttpServletResponse res) {
 		
@@ -65,6 +61,7 @@ public class ReportController {
 		req.setAttribute(Constant.TEMPLATE, Constant.TEMPLATE_PAGE);
 		
 		ModelAndView model = new ModelAndView(Constant.TEMPLATE_PAGE);
+		//要傳回去的model
 		model.addObject("productList", productList);
 		model.addObject("member", member);
 		return model;	
@@ -95,7 +92,7 @@ public class ReportController {
 	        	hString.add("價格：" + (String) map.get("priceStr") + "~" + (String) map.get("priceEnd"));
 	        }
   
-			//1:直向報表2:橫向報表
+			//最後一個參數：1:直向報表2:橫向報表
 			return ReportUtil.exportPdf(FILE_NAME, DESCRIPTION, ID, REOPRT_NAME, dtoList, hString, 1);
 		}catch(Exception e){
 			throw e;

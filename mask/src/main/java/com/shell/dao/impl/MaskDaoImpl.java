@@ -36,12 +36,14 @@ public class MaskDaoImpl implements MaskDao{
 	public List<Product> getPDFByCriteria(Map<String, Object> map) throws Exception {
 		
 		StringBuffer querySql = new StringBuffer();
-		                                                 
+		           
+		//輸入要執行的SQL
 		querySql.append(" select P_Id, ");
 		querySql.append(" P_NAME, SKINTYPE, FEATURE, PRICE, STOCK, SALES ");
 		querySql.append(" from product ");
         querySql.append(" where 1=1 ");
         
+        //必須有傳值才成為查詢條件
         if(StringUtils.isNotBlank((String) map.get("priceStr")) && StringUtils.isNotBlank((String) map.get("priceEnd"))) {
         	querySql.append(" and price between " + (String) map.get("priceStr") + " and   ");
         	querySql.append(" " + (String) map.get("priceEnd") + " ");
@@ -50,8 +52,10 @@ public class MaskDaoImpl implements MaskDao{
 
         querySql.append(" order by P_Id ");
         
+        //後面的class是接收資料的model
 		Query query = entityManager.createNativeQuery(querySql.toString(), Product.class);
 		
+		//model容器
 		List<Product> result = query.getResultList();								
 		
         return result;		

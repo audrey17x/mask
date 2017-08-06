@@ -1,5 +1,13 @@
 package com.shell.constant;
 
+/**
+ * 
+ * 日期:2017年8月6日
+ * 
+ * @author Shell
+ *
+ * Copyright © 2017 Shell. All rights reserved
+ */
 public class Constant {
 	public static final String PAGE = "PAGE";
 	public static final String EMPTY_PAGE = "";

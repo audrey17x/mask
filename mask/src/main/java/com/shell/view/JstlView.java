@@ -9,6 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.InternalResourceView;
 
+/**
+ * 
+ * 日期:2017年8月6日
+ * 
+ * @author Shell
+ *
+ * Copyright © 2017 Shell. All rights reserved
+ */
 public class JstlView extends InternalResourceView {
 
     @Override
