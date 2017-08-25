@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shell.constant.Constant;
 import com.shell.model.Member;
 import com.shell.model.Order;
 import com.shell.model.OrderDetail;
@@ -60,7 +61,11 @@ public class OrderController {
 			sumAmount = sumAmount.add(product.getPrice());
 			productList.add(product);
 		}
-		ModelAndView model = new ModelAndView(INIT);
+		
+		req.setAttribute(Constant.PARTIAL, INIT);
+		req.setAttribute(Constant.TEMPLATE, Constant.TEMPLATE_PAGE);
+		
+		ModelAndView model = new ModelAndView(Constant.TEMPLATE_PAGE);
 		model.addObject("productList", productList);
 		model.addObject("sumAmount", sumAmount);
 		model.addObject("member", member);

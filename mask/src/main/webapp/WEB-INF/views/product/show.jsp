@@ -29,7 +29,8 @@
 		<div class="thumbnails">
 			<c:forEach var="product" items="${productList}" >
 				<div class="box">
-					<a href="https://youtu.be/s6zR2T9vn2c" class="image fit"><img src="${pageContext.request.contextPath}/img/${product.id}.jpg"/></a>
+					<!-- 原本有class="image fit"，但用途不明，可以先拿掉 -->
+					<a href="https://youtu.be/s6zR2T9vn2c"><img src="${pageContext.request.contextPath}/img/${product.id}.jpg"/></a>
 					<div class="inner">
 						<h3>${product.name}</h3>
 						<h5>${product.skinType}</h5><br/>
