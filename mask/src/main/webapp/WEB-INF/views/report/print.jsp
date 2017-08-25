@@ -16,9 +16,14 @@
 			csvBtnEvent();
 		});	
 		
+		$("#restfulBtn").click(function() {
+			restBtnEvent();
+		});	
+		
 	});
 	
 	function pdfBtnEvent() {
+		alert("55");
 		if (chkColumns()) {
 			$('#qForm').prop('action', "./exportPdf");
 		  	$('#qForm').submit();		
@@ -34,10 +39,11 @@
 		return ok;
 	}
 	
-	function clearBtnEvent() {
+	function restBtnEvent() {
+		alert("2");
 		$.ajax({
 			type: "POST",
-			url: "./clear",
+			url: "http://127.0.0.1:8080/restful/hello/Messiss",
 			data: {},
 		   	success: function(data) {
 		   		$("#bodyContent").html(data);			
@@ -62,6 +68,9 @@
 					<td>
 						<button id="exportPdf">列印</button>
 					</td>
+					<td>
+						<button id="restfulBtn">串restful</button>
+					</td>					
 					<td>
 						<button id="tableElement">表格元素版本的列印</button>
 					</td>		

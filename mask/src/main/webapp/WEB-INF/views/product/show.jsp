@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/taglibs.jsp" %>
 <!-- car -->
+<!-- Google Fonts API 使用google所寫好的字體-->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/car/reset.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/car/htmleaf-demo.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/car/style.css"> <!-- Resource style -->
 <!-- 網站設計 -->
 <!-- Scripts -->
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.scrolly.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.poptrox.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/skel.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
+<!-- 整個網站所共用匯入的javascript檔案 -->
+<%@ include file="/WEB-INF/views/common/script.jsp"%>
+<!--<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>-->
 <script src="${pageContext.request.contextPath}/js/car/main.js"></script>
-
+<script src="${pageContext.request.contextPath}/js/car/jquery.poptrox.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/car/jquery.scrolly.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#checkout").click(function() {
