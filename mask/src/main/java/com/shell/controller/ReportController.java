@@ -14,11 +14,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shell.common.JsonResponse;
 import com.shell.common.ReportUtil;
 import com.shell.constant.Constant;
+import com.shell.model.City;
+import com.shell.model.District;
 import com.shell.model.Member;
 import com.shell.model.Product;
 import com.shell.service.MaskService;
@@ -56,6 +60,14 @@ public class ReportController {
 	public ModelAndView init(HttpServletRequest req, HttpServletResponse res) {
 		
 		List<Product> productList = dtoService.findAll();
+		
+		List<City> cityList = null;
+		try {
+			cityList = dtoService.getAllCity();
+		} catch (Exception e) {
+		}
+		
+		req.getSession().setAttribute("city", cityList);
 		
 		req.setAttribute(Constant.PARTIAL, PAGE);
 		req.setAttribute(Constant.TEMPLATE, Constant.TEMPLATE_PAGE);
@@ -205,6 +217,30 @@ public class ReportController {
 		
     	return new ModelAndView(Constant.TEMPLATE_PAGE);
 	}	
+	
+	@RequestMapping(value = "/getDistrict", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> getDistrict(HttpServletRequest request, @RequestParam String cityId) {
+		Map<String, Object> response = new HashMap<>();
+		   
+		try {
+			List<District> district = new ArrayList<>();
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("cityId", cityId);
+			
+			if(!StringUtils.isEmpty(cityId)) {
+				district = dtoService.getDistrictByCriteria(map);
+			}
+			
+			response.put("district", district);
+			request.getSession().setAttribute("district", district);
+		} catch (Exception e) {
+		}
+		
+		JsonResponse jsonResponse = new JsonResponse(Constant.STATUS_CODE_OK, Constant.STATUS_MSG_OK);
+		jsonResponse.setResponse(response);
+		return jsonResponse.returnJsonResponse();
+	}
 	                                              
     public Map<String, Object> initMap(HttpServletRequest request) throws Exception {
 		

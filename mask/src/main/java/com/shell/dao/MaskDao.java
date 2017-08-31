@@ -3,6 +3,8 @@ package com.shell.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.shell.model.City;
+import com.shell.model.District;
 import com.shell.model.Product;
 
 
@@ -22,6 +24,10 @@ public interface MaskDao {
 	public Product save(Product model);
 	
 	public List<Product> getPDFByCriteria(Map<String, Object> map) throws Exception;
+	
+	public List<City> getAllCity() throws Exception;
+	
+	public List<District> getDistrictByCriteria(Map<String, Object> map) throws Exception;
 	
 }
 

@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import com.shell.HibernateUtil;
 import com.shell.dao.MaskDao;
+import com.shell.model.City;
+import com.shell.model.District;
 import com.shell.model.Product;
 
 
@@ -59,8 +61,51 @@ public class MaskDaoImpl implements MaskDao{
 		List<Product> result = query.getResultList();								
 		
         return result;		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<City> getAllCity() throws Exception {
+		
+		StringBuffer querySql = new StringBuffer();
+		           
+		//輸入要執行的SQL
+		querySql.append(" select c.id, c.name ");
+		querySql.append(" from city c ");
+        
+        querySql.append(" order by c.id ");
+        
+        //後面的class是接收資料的model
+		Query query = entityManager.createNativeQuery(querySql.toString(), City.class);
+		
+		//model容器
+		List<City> result = query.getResultList();								
+		
+        return result;		
 	}	
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<District> getDistrictByCriteria(Map<String, Object> map) throws Exception {
+		
+		StringBuffer querySql = new StringBuffer();
+		           
+		//輸入要執行的SQL
+		querySql.append(" select d.id, d.name, d.city_id ");
+		querySql.append(" from district d ");
+		querySql.append(" join city c  on d.city_id = c.id ");
+        querySql.append(" where c.id = '"  + (String) map.get("cityId") + "'");
+        
+        querySql.append(" order by d.id ");
+        
+        //後面的class是接收資料的model
+		Query query = entityManager.createNativeQuery(querySql.toString(), District.class);
+		
+		//model容器
+		List<District> result = query.getResultList();								
+		
+        return result;		
+	}	
 	
 	
 	

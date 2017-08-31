@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shell.dao.MaskDao;
+import com.shell.model.City;
+import com.shell.model.District;
 import com.shell.model.Product;
 import com.shell.service.MaskService;
 
@@ -35,6 +37,14 @@ public class MaskServiceImpl implements MaskService{
 	
 	public List<Product> getPDFByCriteria(Map<String, Object> map) throws Exception {
 		return maskDao.getPDFByCriteria(map);
+	}
+	
+	public List<City> getAllCity() throws Exception {
+		return maskDao.getAllCity();
+	}
+	
+	public List<District> getDistrictByCriteria(Map<String, Object> map) throws Exception {
+		return maskDao.getDistrictByCriteria(map);
 	}
 
 
