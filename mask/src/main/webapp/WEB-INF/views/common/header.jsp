@@ -34,6 +34,7 @@
 			    </c:choose>
 		</ul>
 	</nav>
+	<!-- 要去common.js寫如果點擊選項後觸發submit -->
 	<form:form modelAttribute="product" id="productTarget" action="${pageContext.request.contextPath}/views/product/show" method="post">
 	</form:form>	
 	<form:form modelAttribute="product" id="indexTarget" action="${pageContext.request.contextPath}/views/index/init" method="get">
