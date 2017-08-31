@@ -8,6 +8,9 @@
 		  	$('#qForm').submit();	
 		});	
 		
+		$("#city").css( "width","150px");
+		$("#district").css( "width","150px");
+		
 		$("#city").change(function() {
 			$.ajax({
 				type: "POST",
@@ -16,24 +19,13 @@
 				data: {"cityId":this.value},
 			   	success: function(data) {
 					$("#district").empty();
-					
 					$("#district").append($("<option></option>")
-												.attr("value", "")
-												.text("請選擇"));
+									.attr("value", "")
+									.text("請選擇"));
 					$.each(data.district, function() {
-						if(this.district == "${sessionScope.condition.district}") {
-							$("#district").append($("<option></option>")
-									.attr("value", this.centerSiteId)
-									.text(this.id + "-" + this.name))
-									.prop("selected", true);
-						} else {
-							$("#district").append($("<option></option>")
-									.attr("value", this.id)
-									.text(this.id + "-" + this.name));
-						}
+							$("#district").append($("<option></option>").attr("value", this.id)
+																		.text(this.id + "-" + this.name));
 					});
-					
-					$("#district").multiselect("refresh");
 				}
 			});
 		});
@@ -70,7 +62,6 @@
 	}
 	
 	function restBtnEvent() {
-		alert("2");
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1:8080/restful/hello/Messiss",
@@ -89,8 +80,10 @@
 				<br/>
 				<br/>
 				<tr>
-					<td colspan="3">
+					<td>
 						<label>價格：</label>
+					</td>
+					<td colspan="3">
 						<input type="text" name="priceStr" value="500">&nbsp;~&nbsp;<input type="text" name="priceEnd" value="800">
 					</td>
 				</tr>	
@@ -110,11 +103,10 @@
 				</tr>
 				<tr>
 					<td>
-						<font color=red>*</font>
 						<label>縣市：</label>
 					</td>
-					<td>
-						<select id="city" name="city" style="width: 150px">
+					<td colspan="3">
+						<select id="city" name="city">
 							<option value="">請選擇</option>
 							<c:if test="${!empty sessionScope.city}">
 								<c:forEach items="${sessionScope.city}" var="item">
@@ -129,14 +121,14 @@
 					<td>
 						<label>行政區：</label>
 					</td>				
-					<td>
+					<td colspan="3">
 						<select id="district" name="district">
 							<option value="">請選擇</option>
-								<c:if test="${!empty sessionScope.district}">
-									<c:forEach items="${sessionScope.district}" var="item">
-										<option value="${item.id}">${item.id}-${item.name}</option>
-									</c:forEach>
-								</c:if>
+							<c:if test="${!empty sessionScope.district}">
+								<c:forEach items="${sessionScope.district}" var="item">
+									<option value="${item.id}">${item.id}-${item.name}</option>
+								</c:forEach>
+							</c:if>
 						</select>
 					</td>						
 				</tr>					
